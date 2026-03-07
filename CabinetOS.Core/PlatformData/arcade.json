@@ -1,0 +1,13 @@
+{
+  "Name": "Arcade",
+  "ShortName": "arcade",
+  "Category": "Arcade",
+  "Emulator": "mame",
+
+  "MergeMode": "split",
+  "DefaultFamily": "mame285",
+
+  "Families": [ "mame037", "mame078", "mame106", "mame139", "mame285", "fbneo" ],
+  "BiosFamilies": [ "neogeo", "naomi", "taitosj", "cps3" ],
+  "RegionPreference": [ "USA", "World", "Japan" ]
+}

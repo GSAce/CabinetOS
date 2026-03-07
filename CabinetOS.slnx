@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CabinetOS.App/CabinetOS.App.csproj" />
+  <Project Path="CabinetOS.Core/CabinetOS.Core.csproj" />
+</Solution>

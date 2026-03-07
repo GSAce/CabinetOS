@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Nintendo Entertainment System",
+    "shortName": "NES",
+    "extensions": [".zip", ".nes"],
+    "category": "Console",
+    "scraperId": "nes"
+  },
+  {
+    "name": "Super Nintendo",
+    "shortName": "SNES",
+    "extensions": [".zip", ".smc", ".sfc"],
+    "category": "Console",
+    "scraperId": "snes"
+  },
+  {
+    "name": "Sega Genesis",
+    "shortName": "GEN",
+    "extensions": [".zip", ".bin", ".gen", ".md"],
+    "category": "Console",
+    "scraperId": "genesis"
+  },
+  {
+    "name": "Arcade (MAME)",
+    "shortName": "MAME",
+    "extensions": [".zip", ".7z"],
+    "category": "Arcade",
+    "scraperId": "mame"
+  }
+]
