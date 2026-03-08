@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="CabinetOS.App.Views.Settings.Categories.GeneralSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+
+    <StackPanel Margin="10" Orientation="Vertical">
+
+        <!-- Header -->
+        <TextBlock Text="General Settings"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Margin="0 0 0 10"/>
+
+        <!-- Language -->
+        <StackPanel Orientation="Vertical" Margin="0 0 0 12">
+            <TextBlock Text="Language" FontWeight="SemiBold"/>
+            <TextBox Text="{Binding General.Language, UpdateSourceTrigger=PropertyChanged}"
+                     Width="200"
+                     Margin="0 4 0 0"/>
+        </StackPanel>
+
+        <!-- Region -->
+        <StackPanel Orientation="Vertical" Margin="0 0 0 12">
+            <TextBlock Text="Region" FontWeight="SemiBold"/>
+            <TextBox Text="{Binding General.Region, UpdateSourceTrigger=PropertyChanged}"
+                     Width="200"
+                     Margin="0 4 0 0"/>
+        </StackPanel>
+
+        <!-- Enable Analytics -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 0 12">
+            <CheckBox IsChecked="{Binding General.EnableAnalytics, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Enable Analytics"
+                       Margin="8 0 0 0"
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Check for Updates -->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <CheckBox IsChecked="{Binding General.CheckForUpdates, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Check for Updates Automatically"
+                       Margin="8 0 0 0"
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+
+    </StackPanel>
+</UserControl>

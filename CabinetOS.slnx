@@ -2,6 +2,7 @@
   <Folder Name="/config/" />
   <Folder Name="/docs/">
     <File Path="attribution.md" />
+    <File Path="CHANGELOG.md" />
     <File Path="pipeline.md" />
   </Folder>
   <Folder Name="/src/" />

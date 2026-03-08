@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CabinetOS.App.ViewModels.Settings.Categories;
+using CabinetOS.Core.Settings;
 
 namespace CabinetOS.App.ViewModels.Settings
 {
@@ -19,24 +20,35 @@ namespace CabinetOS.App.ViewModels.Settings
         public ICommand LoadCommand { get; }
         public ICommand ResetCommand { get; }
 
-        public SettingsViewModel()
+        private readonly SettingsService _settingsService;
+
+        public SettingsViewModel(SettingsService settingsService)
         {
+            _settingsService = settingsService;
+
+            // Build category list with dependency injection
             Categories = new ObservableCollection<ISettingsCategory>
             {
-                new GeneralSettingsCategory(),
-                new AppearanceSettingsCategory(),
-                new NetworkSettingsCategory(),
-                new PathsSettingsCategory(),
-                new ScraperSettingsCategory(),
-                new AdvancedSettingsCategory(),
+                new GeneralSettingsCategory(_settingsService),
+                new AppearanceSettingsCategory(_settingsService),
+                new NetworkSettingsCategory(_settingsService),
+                new PathsSettingsCategory(_settingsService),
+                new ScraperSettingsCategory(_settingsService),
+                new AdvancedSettingsCategory(_settingsService),
                 new AboutSettingsCategory()
             };
 
             SelectedCategory = Categories.Count > 0 ? Categories[0] : null;
 
-            SaveCommand = new RelayCommand(_ => SelectedCategory?.Save());
-            LoadCommand = new RelayCommand(_ => SelectedCategory?.Load());
+            SaveCommand = new RelayCommand(async _ => await _settingsService.SaveAsync());
+            LoadCommand = new RelayCommand(_ => ReloadAllCategories());
             ResetCommand = new RelayCommand(_ => SelectedCategory?.ResetToDefaults());
+        }
+
+        private void ReloadAllCategories()
+        {
+            foreach (var category in Categories)
+                category.Load();
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CabinetOS.Core.Config.Settings
+namespace CabinetOS.Core.Settings.Models
 {
     public class ArcadeSettings
     {

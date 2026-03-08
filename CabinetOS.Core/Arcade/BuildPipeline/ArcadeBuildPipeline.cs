@@ -22,6 +22,7 @@ namespace CabinetOS.Core.Arcade.BuildPipeline
                     outputFolder,
                     familyOverride,
                     filterOptions,
+                    dryRun: false,
                     events.OnStatus,
                     events.OnRomProgress,
                     events.OnChdProgress

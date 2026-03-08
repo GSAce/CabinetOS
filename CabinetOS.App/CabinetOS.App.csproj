@@ -22,6 +22,7 @@
     <Folder Include="Resources\Images\ModuleThumbnails\" />
     <Folder Include="Resources\Themes\" />
     <Folder Include="Resources\Styles\" />
+    <Folder Include="Views\Settings\Categories\" />
   </ItemGroup>
 
   <ItemGroup>

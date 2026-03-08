@@ -1,6 +1,5 @@
-﻿using CabinetOS.Core.Settings;
-using CabinetOS.App.Views.Settings.Categories;
-
+﻿using CabinetOS.App.Views.Settings.Categories;
+using CabinetOS.Core.Settings;
 using CabinetOS.Core.Settings.Models;
 
 namespace CabinetOS.App.ViewModels.Settings.Categories
@@ -12,41 +11,83 @@ namespace CabinetOS.App.ViewModels.Settings.Categories
         private readonly ScraperSettingsView _view = new ScraperSettingsView();
         public object View => _view;
 
-        private ScraperSettings _settings = new();
-        public ScraperSettings Settings
+        private readonly SettingsService _settingsService;
+
+        public ScraperSettingsCategory(SettingsService settingsService)
         {
-            get => _settings;
-            set => SetField(ref _settings, value);
+            _settingsService = settingsService;
         }
 
-        // Encryption key (you can later move this to a secure provider)
-        private const string EncryptionKey = "CabinetOS_Scraper_Key";
-
-        public ScraperSettingsCategory()
+        public ScraperSettings Scraper
         {
-            Load();
+            get => _settingsService.Current.Scraper;
+            set
+            {
+                _settingsService.Current.Scraper = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ScraperNetworkSettings Network
+        {
+            get => _settingsService.Current.ScraperNetwork;
+            set
+            {
+                _settingsService.Current.ScraperNetwork = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public IgdbConfig Igdb
+        {
+            get => _settingsService.Current.Igdb;
+            set
+            {
+                _settingsService.Current.Igdb = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ScreenScraperConfig ScreenScraper
+        {
+            get => _settingsService.Current.ScreenScraper;
+            set
+            {
+                _settingsService.Current.ScreenScraper = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TheGamesDbConfig TheGamesDb
+        {
+            get => _settingsService.Current.TheGamesDb;
+            set
+            {
+                _settingsService.Current.TheGamesDb = value;
+                OnPropertyChanged();
+            }
         }
 
         public void Load()
         {
-            Settings = SettingsService.Load<ScraperSettings>(
-                SettingsPaths.ScraperSettingsFile,
-                EncryptionKey
-            );
+            OnPropertyChanged(nameof(Scraper));
+            OnPropertyChanged(nameof(Network));
+            OnPropertyChanged(nameof(Igdb));
+            OnPropertyChanged(nameof(ScreenScraper));
+            OnPropertyChanged(nameof(TheGamesDb));
         }
 
-        public void Save()
-        {
-            SettingsService.Save(
-                SettingsPaths.ScraperSettingsFile,
-                Settings,
-                EncryptionKey
-            );
-        }
+        public async void Save() => await _settingsService.SaveAsync();
 
         public void ResetToDefaults()
         {
-            Settings = new ScraperSettings();
+            _settingsService.Current.Scraper = new ScraperSettings();
+            _settingsService.Current.ScraperNetwork = new ScraperNetworkSettings();
+            _settingsService.Current.Igdb = new IgdbConfig();
+            _settingsService.Current.ScreenScraper = new ScreenScraperConfig();
+            _settingsService.Current.TheGamesDb = new TheGamesDbConfig();
+
+            Load();
         }
     }
 }

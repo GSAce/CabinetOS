@@ -1,51 +1,125 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Threading.Tasks;
 using CabinetOS.Core.Settings.Encryption;
+using CabinetOS.Core.Settings.Models;
 
 namespace CabinetOS.Core.Settings
 {
-    public static class SettingsService
+    public class SettingsService : ISettingsService
     {
-        private static readonly JsonSerializerOptions Options = new()
+        private const string EncryptionKey = "CabinetOS-Default-Encryption-Key";
+
+        private readonly JsonSerializerOptions _jsonOptions = new()
         {
             WriteIndented = true,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            PropertyNameCaseInsensitive = true
         };
 
-        public static T Load<T>(string path, string encryptionKey = null) where T : new()
+        public CabinetSettings Current { get; private set; } = new();
+
+        private readonly string _settingsFile;
+        private readonly string _secretsFile;
+
+        public SettingsService()
         {
-            try
+            _settingsFile = SettingsPaths.SettingsFile;
+            _secretsFile = SettingsPaths.SecretsFile;
+
+            Directory.CreateDirectory(SettingsPaths.Root);
+        }
+
+        public async Task LoadAsync()
+        {
+            // Load main settings
+            if (File.Exists(_settingsFile))
             {
-                if (!File.Exists(path))
-                    return new T();
+                var json = await File.ReadAllTextAsync(_settingsFile);
+                var loaded = JsonSerializer.Deserialize<CabinetSettings>(json, _jsonOptions);
 
-                var json = File.ReadAllText(path);
-                var model = JsonSerializer.Deserialize<T>(json, Options);
-
-                if (model is IEncryptedSettings encrypted && encryptionKey != null)
-                    encrypted.DecryptFields(encryptionKey);
-
-                return model ?? new T();
+                if (loaded != null)
+                    Current = loaded;
             }
-            catch
+            else
             {
-                return new T();
+                await SaveAsync(); // create defaults
+            }
+
+            // Load encrypted secrets
+            if (File.Exists(_secretsFile))
+            {
+                var encryptedJson = await File.ReadAllTextAsync(_secretsFile);
+                var encrypted = JsonSerializer.Deserialize<EncryptedSettingsBlob>(encryptedJson, _jsonOptions);
+
+                if (encrypted != null)
+                    ApplyDecryptedSecrets(encrypted);
             }
         }
 
-        public static void Save<T>(string path, T model, string encryptionKey = null)
+        public async Task SaveAsync()
         {
-            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            // Save unencrypted settings
+            var json = JsonSerializer.Serialize(Current, _jsonOptions);
+            await File.WriteAllTextAsync(_settingsFile, json);
 
-            if (model is IEncryptedSettings encrypted && encryptionKey != null)
-                encrypted.EncryptFields(encryptionKey);
+            // Save encrypted secrets
+            var encrypted = ExtractEncryptedSecrets();
+            var encryptedJson = JsonSerializer.Serialize(encrypted, _jsonOptions);
+            await File.WriteAllTextAsync(_secretsFile, encryptedJson);
+        }
 
-            var json = JsonSerializer.Serialize(model, Options);
-            File.WriteAllText(path, json);
+        private EncryptedSettingsBlob ExtractEncryptedSecrets()
+        {
+            // Let each model encrypt its own fields
+            Current.Igdb.EncryptFields(EncryptionKey);
+            Current.ScreenScraper.EncryptFields(EncryptionKey);
 
-            if (model is IEncryptedSettings decrypted && encryptionKey != null)
-                decrypted.DecryptFields(encryptionKey);
+            return new EncryptedSettingsBlob
+            {
+                // IGDB
+                IgdbClientId = Current.Igdb.ClientId,
+                IgdbClientSecret = Current.Igdb.ClientSecretEncrypted,
+
+                // ScreenScraper developer credentials
+                ScreenScraperDevId = Current.ScreenScraper.DevId,
+                ScreenScraperDevPassword = Current.ScreenScraper.DevPasswordEncrypted,
+
+                // ScreenScraper user login
+                ScreenScraperUserName = Current.ScreenScraper.UserName,
+                ScreenScraperUserPassword = Current.ScreenScraper.UserPasswordEncrypted,
+
+                // ScreenScraper API key
+                ScreenScraperApiKey = Current.ScreenScraper.ApiKeyEncrypted,
+
+                // TheGamesDb
+                TheGamesDbApiKey = Current.TheGamesDb.ApiKey
+            };
+        }
+
+        private void ApplyDecryptedSecrets(EncryptedSettingsBlob blob)
+        {
+            // IGDB
+            Current.Igdb.ClientId = blob.IgdbClientId;
+            Current.Igdb.ClientSecretEncrypted = blob.IgdbClientSecret;
+            Current.Igdb.DecryptFields(EncryptionKey);
+
+            // ScreenScraper developer credentials
+            Current.ScreenScraper.DevId = blob.ScreenScraperDevId;
+            Current.ScreenScraper.DevPasswordEncrypted = blob.ScreenScraperDevPassword;
+
+            // ScreenScraper user login
+            Current.ScreenScraper.UserName = blob.ScreenScraperUserName;
+            Current.ScreenScraper.UserPasswordEncrypted = blob.ScreenScraperUserPassword;
+
+            // ScreenScraper API key
+            Current.ScreenScraper.ApiKeyEncrypted = blob.ScreenScraperApiKey;
+
+            // Decrypt all ScreenScraper fields
+            Current.ScreenScraper.DecryptFields(EncryptionKey);
+
+            // TheGamesDb
+            Current.TheGamesDb.ApiKey = blob.TheGamesDbApiKey;
         }
     }
 }
