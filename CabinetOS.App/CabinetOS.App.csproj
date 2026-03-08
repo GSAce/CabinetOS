@@ -12,6 +12,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\Icons\Corel Auto-Preserve\**" />
+    <EmbeddedResource Remove="Resources\Icons\Corel Auto-Preserve\**" />
+    <None Remove="Resources\Icons\Corel Auto-Preserve\**" />
+    <Page Remove="Resources\Icons\Corel Auto-Preserve\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Resources\Images\ModuleThumbnails\" />
     <Folder Include="Resources\Themes\" />
     <Folder Include="Resources\Styles\" />

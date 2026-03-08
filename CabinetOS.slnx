@@ -1,4 +1,18 @@
 <Solution>
+  <Folder Name="/config/" />
+  <Folder Name="/docs/">
+    <File Path="attribution.md" />
+    <File Path="pipeline.md" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/CabinetOS.Arcade/" />
+  <Folder Name="/src/CabinetOS.Console/" />
+  <Folder Name="/src/CabinetOS.Core/" />
+  <Folder Name="/src/CabinetOS.Frontend/" />
+  <Folder Name="/src/CabinetOS.PiBuilder/" />
+  <Folder Name="/src/CabinetOS.RomManager/" />
+  <Folder Name="/src/CabinetOS.Scraper/" />
+  <Folder Name="/src/CabinetOS.Shared/" />
   <Project Path="CabinetOS.App/CabinetOS.App.csproj" />
   <Project Path="CabinetOS.Core/CabinetOS.Core.csproj" />
 </Solution>
