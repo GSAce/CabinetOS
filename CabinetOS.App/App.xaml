@@ -1,59 +1,7 @@
 ﻿<Application x:Class="CabinetOS.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:helpers="clr-namespace:CabinetOS.App.Helpers"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:CabinetOS.App"
-             StartupUri="MainWindow.xaml">
-
+             StartupUri="pack://application:,,,/CabinetOS.UI;component/ShellWindow.xaml">
     <Application.Resources>
-
-        <ResourceDictionary>
-
-            <!-- MERGED RESOURCE DICTIONARIES -->
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-
-            <!-- ========================================= -->
-            <!-- GLOBAL CONVERTERS (place them right here) -->
-            <!-- ========================================= -->
-            <helpers:EqualsConverter x:Key="EqualsConverter"/>
-
-            <!-- ========================================= -->
-            <!-- SYSTEM BAR TOGGLE SWITCH STYLE            -->
-            <!-- ========================================= -->
-            <Style x:Key="SystemBarToggleSwitch" TargetType="ToggleButton">
-                <Setter Property="Width" Value="21"/>
-                <Setter Property="Height" Value="11"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="ToggleButton">
-                            <Grid>
-                                <Border x:Name="SwitchTrack"
-                                        CornerRadius="5.5"
-                                        Background="#444"
-                                        BorderBrush="#222"
-                                        BorderThickness="1"/>
-
-                                <Ellipse x:Name="SwitchThumb"
-                                         Width="9"
-                                         Height="9"
-                                         Margin="1"
-                                         Fill="White"/>
-                            </Grid>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsChecked" Value="True">
-                                    <Setter TargetName="SwitchTrack" Property="Background" Value="#2EA3FF"/>
-                                    <Setter TargetName="SwitchThumb" Property="Margin" Value="11,1,1,1"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-
-        </ResourceDictionary>
-
     </Application.Resources>
 </Application>

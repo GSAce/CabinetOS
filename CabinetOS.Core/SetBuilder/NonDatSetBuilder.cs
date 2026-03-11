@@ -67,7 +67,7 @@ namespace CabinetOS.Core.SetBuilder
                     continue;
                 }
 
-                var platformOutput = Path.Combine(options.OutputRoot, platformDef.Shortname ?? platformDef.Id);
+                var platformOutput = Path.Combine(options.OutputRoot, platformDef.ShortName ?? platformDef.Id);
                 Directory.CreateDirectory(platformOutput);
 
                 await BuildPlatformAsync(

@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="CabinetOS.UI.WelcomeScreen"
+             x:Name="RootControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#AA000000">
+
+    <UserControl.Resources>
+
+        <!-- Dark rounded button style (same as Home + Arcade Tools) -->
+        <Style x:Key="DarkRoundedButton" TargetType="Button">
+            <Setter Property="Background" Value="#222"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="6,3"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#333"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#111"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+
+
+    <Grid>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <TextBlock Text="WELCOME TO CABINETOS"
+                       Foreground="White"
+                       FontSize="36"
+                       FontWeight="Bold"
+                       Margin="0,0,0,40"/>
+
+            <Button Content="Retro Library"
+                    Style="{StaticResource DarkRoundedButton}"
+                    Click="RetroLibrary_Click"
+                    Margin="0,0,0,10"/>
+
+            <Button Content="Arcade Tools"
+                    Style="{StaticResource DarkRoundedButton}"
+                    Click="ArcadeTools_Click"
+                    Margin="0,0,0,10"/>
+
+            <Button Content="Settings"
+                    Style="{StaticResource DarkRoundedButton}"
+                    Click="Settings_Click"
+                    Margin="0,0,0,10"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</UserControl>

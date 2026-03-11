@@ -14,6 +14,7 @@
   <Folder Name="/src/CabinetOS.RomManager/" />
   <Folder Name="/src/CabinetOS.Scraper/" />
   <Folder Name="/src/CabinetOS.Shared/" />
-  <Project Path="CabinetOS.App/CabinetOS.App.csproj" />
+  <Project Path="CabinetOS.App/CabinetOS.App.csproj" Id="9f921351-cb54-4045-8c81-ac03eefb9932" />
   <Project Path="CabinetOS.Core/CabinetOS.Core.csproj" />
+  <Project Path="CabinetOS.UI/CabinetOS.UI.csproj" Id="ba19c189-57b6-4261-bd86-2f6699b72ca2" />
 </Solution>

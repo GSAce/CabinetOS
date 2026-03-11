@@ -7,14 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Metadata\" />
     <Folder Include="PlatformData\" />
+    <Folder Include="Scanning\" />
 	  <Folder Include="Services" />
 	  <Folder Include="Utilities" />
 </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="SharpCompress" Version="0.47.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="PlatformData\platforms.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
