@@ -6,34 +6,53 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto"/>
+            <!-- Left buttons -->
+            <ColumnDefinition Width="*"/>
+            <!-- Center -->
+            <ColumnDefinition Width="Auto"/>
+            <!-- Right status -->
         </Grid.ColumnDefinitions>
 
-        <!-- LEFT SIDE: CabinetOS (Start Button) -->
-        <Button Grid.Column="0"
-                Background="Transparent"
-                BorderThickness="0"
-                Padding="10,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
-                Click="CabinetOS_Click">
-            <TextBlock Text="CabinetOS"
-                       Foreground="White"
-                       FontSize="16"
-                       FontWeight="Bold"/>
-        </Button>
-
-        <!-- CENTER (optional status text) -->
-        <StackPanel Grid.Column="1"
+        <!-- LEFT SIDE: Home + Back buttons -->
+        <StackPanel Grid.Column="0"
                     Orientation="Horizontal"
-                    VerticalAlignment="Center">
-            <TextBlock x:Name="CenterStatusText"
-                       Text=""
-                       Foreground="White"
-                       FontSize="14"/>
+                    VerticalAlignment="Center"
+                    Margin="10,0,0,0">
+
+            <!-- HOME BUTTON (icon placeholder) -->
+            <Button x:Name="HomeButton"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="10,0"
+                    Click="CabinetOS_Click"
+                    Foreground="White"
+                    FontSize="14">
+                <TextBlock Text="🏠"/>
+            </Button>
+
+            <!-- BACK BUTTON -->
+            <Button x:Name="BackButton"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Padding="10,0"
+                    Margin="10,0,0,0"
+                    Foreground="White"
+                    FontSize="14"
+                    Click="BackButton_Click"
+                    Visibility="Collapsed">
+                <TextBlock Text="←"/>
+            </Button>
         </StackPanel>
+
+        <!-- CENTER STATUS TEXT -->
+        <TextBlock Grid.Column="1"
+                   x:Name="CenterStatusText"
+                   Text=""
+                   Foreground="White"
+                   FontSize="14"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
 
         <!-- RIGHT SIDE: WiFi / Battery / Clock -->
         <StackPanel Grid.Column="2"
@@ -50,7 +69,6 @@
                        Foreground="White"
                        Margin="0,0,10,0"/>
 
-            <!-- CLOCK WITH PLACEHOLDER -->
             <TextBlock x:Name="ClockText"
                        Text="00:00"
                        Foreground="White"

@@ -10,6 +10,14 @@
         Width="1280"
         Height="720">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CabinetOS.UI;component/Themes/CabinetTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
 
         <!-- LAYOUT: SystemBar (top), ContentHost (middle), MainMenu (overlay) -->
@@ -19,6 +27,11 @@
             <RowDefinition Height="*"/>
             <!-- ContentHost -->
         </Grid.RowDefinitions>
+
+        <!-- SYSTEM BAR -->
+        <local:SystemBar x:Name="SystemBar"
+                         Grid.Row="0"
+                         Panel.ZIndex="999"/>
 
         <!-- MAIN CONTENT HOST -->
         <ContentControl x:Name="ContentHost"
@@ -31,11 +44,6 @@
                               Visibility="Collapsed"
                               HorizontalAlignment="Left"
                               VerticalAlignment="Stretch"/>
-
-        <!-- SYSTEM BAR (ALWAYS ON TOP) -->
-        <local:SystemBar x:Name="SystemBar"
-                         Grid.Row="0"
-                         Panel.ZIndex="999"/>
 
     </Grid>
 </Window>

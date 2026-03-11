@@ -16,7 +16,6 @@ namespace CabinetOS.UI
         {
             InitializeComponent();
 
-            // Initialize and start the clock timer
             _clockTimer = new DispatcherTimer
             {
                 Interval = TimeSpan.FromSeconds(1)
@@ -24,7 +23,6 @@ namespace CabinetOS.UI
             _clockTimer.Tick += ClockTimer_Tick;
             _clockTimer.Start();
 
-            // Set initial time immediately
             ClockText.Text = DateTime.Now.ToString("h:mm tt");
         }
 
@@ -36,6 +34,16 @@ namespace CabinetOS.UI
         private void CabinetOS_Click(object sender, RoutedEventArgs e)
         {
             MainMenuRequested?.Invoke();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            HomeRequested?.Invoke();
+        }
+
+        public void SetBackButtonVisible(bool isVisible)
+        {
+            BackButton.Visibility = isVisible ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public void SetCenterStatus(string text)

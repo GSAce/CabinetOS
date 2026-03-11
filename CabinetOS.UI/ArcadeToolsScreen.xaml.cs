@@ -15,7 +15,7 @@ namespace CabinetOS.UI
 
         private void StartScanSort_Click(object sender, RoutedEventArgs e)
         {
-            Log("Starting Arcade Scan &amp; Sort...");
+            Log("Starting Arcade Scan & Sort...");
             StatusLabel.Text = "Processing...";
             Progress.Value = 0;
 

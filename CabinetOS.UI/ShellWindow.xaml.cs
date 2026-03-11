@@ -1,50 +1,69 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace CabinetOS.UI
 {
     public partial class ShellWindow : Window
     {
-        public static ShellWindow Instance { get; set; }
+        public static ShellWindow? Instance { get; set; }
+        private bool _menuOpen = false;
 
         public ShellWindow()
         {
             Instance = this;
             InitializeComponent();
 
-            // Load WelcomeScreen as the default screen
-            ContentHost.Content = new WelcomeScreen();
+            SystemBar.MainMenuRequested += ToggleMainMenu;
+            SystemBar.HomeRequested += ShowWelcomeScreen;
 
-            // Hook SystemBar events
-            SystemBar.MainMenuRequested += ShowMainMenu;
-            SystemBar.HomeRequested += ShowHomeScreen;
+            ShowWelcomeScreen();
+        }
+
+        private void ToggleMainMenu()
+        {
+            if (_menuOpen)
+            {
+                HideMainMenu();
+            }
+            else
+            {
+                MainMenu.Visibility = Visibility.Visible;
+                _menuOpen = true;
+            }
+        }
+
+        private void HideMainMenu()
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            _menuOpen = false;
+        }
+
+        public void ShowWelcomeScreen()
+        {
+            HideMainMenu();
+            ContentHost.Content = new WelcomeScreen();
+            SystemBar.SetBackButtonVisible(false); // Home screen
         }
 
         public void ShowHomeScreen()
         {
-            ContentHost.Content = new HomeScreen();
             HideMainMenu();
+            ContentHost.Content = new HomeScreen();
+            SystemBar.SetBackButtonVisible(true);
         }
 
         public void ShowArcadeTools()
         {
-            ContentHost.Content = new ArcadeToolsScreen();
             HideMainMenu();
+            ContentHost.Content = new ArcadeToolsScreen();
+            SystemBar.SetBackButtonVisible(true);
         }
 
-        // ⭐ NEW: Show the slide-out menu instead of replacing the screen
-        public void ShowMainMenu()
-        {
-            if (MainMenu.Visibility == Visibility.Visible)
-                HideMainMenu();
-            else
-                MainMenu.Visibility = Visibility.Visible;
-        }
-
-        // ⭐ NEW: Hide the slide-out menu
-        public void HideMainMenu()
-        {
-            MainMenu.Visibility = Visibility.Collapsed;
-        }
+        // TODO make settings screen
+        //public void ShowSettings()
+        //{
+        //    HideMainMenu();
+        //    ContentHost.Content = new SettingsScreen();
+        //    SystemBar.SetBackButtonVisible(true);
+        //}
     }
 }
