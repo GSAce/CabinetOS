@@ -213,7 +213,7 @@ csx/
 # Microsoft Azure Emulator
 ecf/
 rcf/
-
+CabinetOS.App/Emulators/
 # Windows Store app package directories and files
 AppPackages/
 BundleArtifacts/
@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Emulators/RetroArch
