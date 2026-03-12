@@ -24,7 +24,7 @@ namespace CabinetOS.UI
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            //ShellWindow.Instance.ShowSettings();
+            ShellWindow.Instance.ShowSettingsHomeScreen();
         }
     }
     

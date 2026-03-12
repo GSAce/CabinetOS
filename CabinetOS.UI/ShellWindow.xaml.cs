@@ -14,7 +14,7 @@ namespace CabinetOS.UI
 
             SystemBar.MainMenuRequested += ToggleMainMenu;
             SystemBar.HomeRequested += ShowWelcomeScreen;
-
+            SystemBar.BackRequested += HandleBackNavigation;
             ShowWelcomeScreen();
         }
 
@@ -58,12 +58,38 @@ namespace CabinetOS.UI
             SystemBar.SetBackButtonVisible(true);
         }
 
-        // TODO make settings screen
-        //public void ShowSettings()
-        //{
-        //    HideMainMenu();
-        //    ContentHost.Content = new SettingsScreen();
-        //    SystemBar.SetBackButtonVisible(true);
-        //}
+        public void ShowSettingsHomeScreen()
+        {
+            HideMainMenu();
+            ContentHost.Content = new Settings.SettingsHomeScreen();
+            SystemBar.SetBackButtonVisible(true);
+        }
+
+        
+            private void HandleBackNavigation()
+        {
+            switch (ContentHost.Content)
+            {
+                // If you're on the Settings home screen, go back to the main Home screen
+                case Settings.SettingsHomeScreen:
+                    ShowWelcomeScreen();
+                    break;
+
+                // If you're inside any nested settings screen, go back to Settings home
+                case Settings.DisplaySettingsScreen:
+                case Settings.AudioSettingsScreen:
+                case Settings.NetworkSettingsScreen:
+                case Settings.RetroLibrarySettingsScreen:
+                case Settings.StorageSettingsScreen:
+                case Settings.AboutSettingsScreen:
+                    ShowSettingsHomeScreen();
+                    break;
+
+                // Default fallback: go home
+                default:
+                    ShowWelcomeScreen();
+                    break;
+            }
+        }
     }
 }

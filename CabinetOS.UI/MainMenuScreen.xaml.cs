@@ -23,7 +23,9 @@ namespace CabinetOS.UI
         // TODO make settings screen
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            //ShellWindow.Instance.ShowSettings();
+            ShellWindow.Instance.ShowSettingsHomeScreen();
+
+
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

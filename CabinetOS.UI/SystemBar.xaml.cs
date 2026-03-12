@@ -11,6 +11,7 @@ namespace CabinetOS.UI
 
         public event Action? MainMenuRequested;
         public event Action? HomeRequested;
+        public event Action? BackRequested;
 
         public SystemBar()
         {
@@ -38,7 +39,7 @@ namespace CabinetOS.UI
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            HomeRequested?.Invoke();
+            BackRequested?.Invoke();
         }
 
         public void SetBackButtonVisible(bool isVisible)
