@@ -1,26 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using CabinetOS.Core.Input;
+using CabinetOS.UI.Windows;
 
 namespace CabinetOS.UI
 {
-    /// <summary>
-    /// Interaction logic for SettingsScreen.xaml
-    /// </summary>
     public partial class SettingsScreen : UserControl
     {
-        public SettingsScreen()
+        private readonly ControllerMapping _inputMapper;
+        private readonly ControllerMappingStore _mappingStore;
+
+        public SettingsScreen(ControllerMapping inputMapper, ControllerMappingStore mappingStore)
         {
             InitializeComponent();
+            _inputMapper = inputMapper;
+            _mappingStore = mappingStore;
+
+            // Force visibility ON
+            ControllerSettingsButton.Visibility = Visibility.Visible;
+        }
+
+        private void ControllerSettings_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new ControllerMappingWindow(
+                _inputMapper,
+                _mappingStore,
+                controllerIndex: 0,
+                actionName: "A Button",
+                isAxis: false);
+
+            window.Owner = Window.GetWindow(this);
+            window.ShowDialog();
         }
     }
 }

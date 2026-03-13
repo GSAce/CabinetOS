@@ -5,7 +5,15 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <!-- THEME -->
                 <ResourceDictionary Source="/CabinetOS.UI;component/Themes/CabinetTheme.xaml"/>
+
+                <!-- ICONS -->
+                <ResourceDictionary Source="/CabinetOS.UI;component/Icons/Controller/XboxIcons.Alt.xaml"/>
+
+
+
+
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

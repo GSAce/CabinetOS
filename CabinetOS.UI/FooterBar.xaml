@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="CabinetOS.UI.FooterBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CabinetOS.UI"
+             Height="40">
+    <Grid Background="{StaticResource Brush.FooterBar.Background}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left side: primary actions -->
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Margin="16,0,0,0">
+            <Image Width="16" Height="16"
+                   Source="{StaticResource IconXboxA_Alt}" />
+            <TextBlock Text="Select"
+                       Margin="4,0,16,0"
+                       Style="{StaticResource Text.FooterBar.Label}" />
+
+            <Image Width="16" Height="16"
+                   Source="{StaticResource IconXboxB_Alt}" />
+            <TextBlock Text="Back"
+                       Margin="4,0,16,0"
+                       Style="{StaticResource Text.FooterBar.Label}" />
+
+            <Image Width="16" Height="16"
+                   Source="{StaticResource IconXboxView_Alt}" />
+            <TextBlock Text="Options"
+                       Margin="4,0,16,0"
+                       Style="{StaticResource Text.FooterBar.Label}" />
+
+            <Image Width="16" Height="16"
+                   Source="{StaticResource IconXboxMenu_Alt}" />
+            <TextBlock Text="Menu"
+                       Margin="4,0,0,0"
+                       Style="{StaticResource Text.FooterBar.Label}" />
+        </StackPanel>
+
+        <!-- Right side: navigation / system hints -->
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Margin="0,0,16,0">
+            <Image Width="16" Height="16"
+                   Source="{StaticResource IconXboxLB_Alt}" />
+            <TextBlock Text="Prev"
+                       Margin="4,0,16,0"
+                       Style="{StaticResource Text.FooterBar.Label}" />
+
+            <Image Width="16" Height="16"
+                   Source="{StaticResource IconXboxRB_Alt}" />
+            <TextBlock Text="Next"
+                       Margin="4,0,16,0"
+                       Style="{StaticResource Text.FooterBar.Label}" />
+
+            <Image Width="16" Height="16"
+                   Source="{StaticResource IconXboxLeftStick_Alt}" />
+            <TextBlock Text="Scroll"
+                       Margin="4,0,0,0"
+                       Style="{StaticResource Text.FooterBar.Label}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

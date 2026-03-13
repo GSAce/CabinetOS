@@ -1,0 +1,90 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ========================= -->
+    <!--   FULL CONTROLLER IMAGE   -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxController_Series_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxController_Series_Alt.png"/>
+    <BitmapImage x:Key="IconXboxController_One_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxController_One_Alt.png"/>
+
+    <!-- ========================= -->
+    <!--        STICK PRESSES      -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxLS_Press_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxLS_Press_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxRS_Press_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxRS_Press_Alt.png"/>
+    
+    <!-- ========================= -->
+    <!--        STICKS             -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxLeftStick_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxLeftStick_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxRightStick_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxRightStick_Alt.png"/>
+
+    <!-- ========================= -->
+    <!--          D-PAD            -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxDpad_Up_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxDpad_Up_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxDpad_Down_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxDpad_Down_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxDpad_Left_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxDpad_Left_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxDpad_Right_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxDpad_Right_Alt.png"/>
+
+    <!-- ========================= -->
+    <!--         FACE BUTTONS      -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxA_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxA_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxB_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxB_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxX_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxX_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxY_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxY_Alt.png"/>
+
+    <!-- ========================= -->
+    <!--          BUMPERS          -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxLB_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxLB_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxRB_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxRB_Alt.png"/>
+
+    <!-- ========================= -->
+    <!--          TRIGGERS         -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxLT_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxLT_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxRT_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxRT_Alt.png"/>
+
+    <!-- ========================= -->
+    <!--       SYSTEM BUTTONS      -->
+    <!-- ========================= -->
+    <BitmapImage x:Key="IconXboxMenu_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxMenu_Alt.png"/>
+
+    <BitmapImage x:Key="IconXboxView_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxView_Alt.png"/>
+
+    <!-- <BitmapImage x:Key="IconXboxGuide_Alt"
+                 UriSource="/CabinetOS.UI;component/Icons/Controller/IconXboxGuide_Alt.png"/> -->
+
+</ResourceDictionary>

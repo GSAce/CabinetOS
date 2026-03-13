@@ -3,11 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="#111">
 
-
-
-    <!-- SETTINGS LAYOUT -->
     <Grid Margin="40">
-
         <StackPanel>
 
             <TextBlock Text="SETTINGS"
@@ -35,8 +31,7 @@
                     Width="200"
                     Height="60"
                     HorizontalAlignment="Center"
-                    Margin="0 0 0 12"
-                    />
+                    Margin="0 0 0 12"/>
 
             <Button Content="Retro Library"
                     Style="{StaticResource DarkRoundedButton}"
@@ -45,13 +40,21 @@
                     HorizontalAlignment="Center"
                     Margin="0 0 0 12"/>
 
+            <Button x:Name="ControllerSettingsButton"
+        Content="Controller Settings"
+        Style="{StaticResource DarkRoundedButton}"
+        Width="200"
+        Height="60"
+        HorizontalAlignment="Center"
+        Margin="0 0 0 12"
+        Click="ControllerSettings_Click"/>
+
             <Button Content="Storage"
                     Style="{StaticResource DarkRoundedButton}"
                     Width="200"
                     Height="60"
                     HorizontalAlignment="Center"
-                    Margin="0 0 0 12"
-                    />
+                    Margin="0 0 0 12"/>
 
             <Button Content="About CabinetOS"
                     Style="{StaticResource DarkRoundedButton}"
@@ -61,6 +64,5 @@
                     Margin="0 0 0 12"/>
 
         </StackPanel>
-
     </Grid>
 </UserControl>

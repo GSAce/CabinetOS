@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="CabinetOS.UI.Controls.ControllerMappingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- DPad + Start/Back -->
+            <RowDefinition Height="Auto"/>
+            <!-- LB/RB -->
+            <RowDefinition Height="Auto"/>
+            <!-- LT/RT -->
+            <RowDefinition Height="Auto"/>
+            <!-- Face Buttons -->
+            <RowDefinition Height="Auto"/>
+            <!-- Stick Buttons -->
+            <RowDefinition Height="Auto"/>
+            <!-- Stick Buttons -->
+        </Grid.RowDefinitions>
+
+        <!-- DPad + Start/Back -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <Image Source="{StaticResource di_IconXboxDpadCross_Alt}" Width="90" Margin="20,0"/>
+            <StackPanel Orientation="Vertical" Margin="20,0">
+                <Image Source="{StaticResource di_view_button}" Width="50" Margin="0,5"/>
+                <Image Source="{StaticResource di_menu_button}" Width="50" Margin="0,5"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- LB / RB -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <Image Source="{StaticResource di_IconXboxLB_Alt}" Width="70" Margin="20,0"/>
+            <Image Source="{StaticResource di_IconXboxRB_Alt}" Width="70" Margin="20,0"/>
+        </StackPanel>
+
+        <!-- LT / RT -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <Image Source="{StaticResource di_IconXboxLT_Alt}" Width="70" Margin="20,0"/>
+            <Image Source="{StaticResource di_IconXboxRT_Alt}" Width="70" Margin="20,0"/>
+        </StackPanel>
+
+        <!-- FACE BUTTON GRID (ABXY diamond) -->
+        <Grid Grid.Row="3" HorizontalAlignment="Center" Margin="0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Y -->
+            <Image Grid.Row="0" Grid.Column="1"
+                   Source="{StaticResource di_IconXboxY_Alt}"
+                   Width="60" Margin="10"/>
+
+            <!-- X -->
+            <Image Grid.Row="1" Grid.Column="0"
+                   Source="{StaticResource di_IconXboxX_Alt}"
+                   Width="60" Margin="10"/>
+
+            <!-- B -->
+            <Image Grid.Row="1" Grid.Column="2"
+                   Source="{StaticResource di_IconXboxB_Alt}"
+                   Width="60" Margin="10"/>
+
+            <!-- A -->
+            <Image Grid.Row="2" Grid.Column="1"
+                   Source="{StaticResource di_IconXboxA_Alt}"
+                   Width="60" Margin="10"/>
+        </Grid>
+
+        <!-- Stick Axis + Stick Press -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+
+            <!-- Left Stick Axis -->
+            <Image Source="{StaticResource di_IconXboxLS4Way_Alt}" Width="120" Margin="20,0"/>
+
+           
+            <!-- Right Stick Axis -->
+            <Image Source="{StaticResource di_IconXboxRS4Way_Alt}" Width="120" Margin="20,0"/>
+
+           
+        </StackPanel>
+        <!-- Stick Buttons -->
+        <StackPanel Grid.Row="5"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            Margin="0,20">
+
+            <!-- Left Stick Press -->
+            <Image Source="{StaticResource IconXboxLS_Press_Alt}"
+           Width="150"
+           Height="150"
+           Stretch="Uniform" />
+
+            <!-- Right Stick Press -->
+            <Image Source="{StaticResource IconXboxRS_Press_Alt}"
+           Width="150"
+           Height="150"
+           Margin="20,0"
+           Stretch="Uniform" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>

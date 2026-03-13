@@ -10,22 +10,22 @@
         Width="1280"
         Height="720">
 
-    <Window.Resources>
+   <!--  <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/CabinetOS.UI;component/Themes/CabinetTheme.xaml"/>
+                <ResourceDictionary Source="/CabinetOS.UI;component/Icons/Controller/XboxIcons.Alt.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
+    </Window.Resources>-->
 
     <Grid>
 
-        <!-- LAYOUT: SystemBar (top), ContentHost (middle), MainMenu (overlay) -->
+        <!-- LAYOUT: SystemBar (top), ContentHost (middle), FooterBar (bottom), MainMenu overlay -->
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <!-- SystemBar -->
             <RowDefinition Height="*"/>
-            <!-- ContentHost -->
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
         <!-- SYSTEM BAR -->
@@ -37,6 +37,11 @@
         <ContentControl x:Name="ContentHost"
                         Grid.Row="1"
                         Focusable="False"/>
+
+        <!-- FOOTER BAR -->
+        <local:FooterBar x:Name="FooterBar"
+                         Grid.Row="2"
+                         Panel.ZIndex="998"/>
 
         <!-- SLIDE-OUT MAIN MENU OVERLAY -->
         <local:MainMenuScreen x:Name="MainMenu"

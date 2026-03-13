@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="Icons\Controller\XboxIcons.Alt.xaml" />
     <Page Remove="Themes\CabinetTheme.xaml" />
   </ItemGroup>
 
@@ -16,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Icons\Controller\XboxIcons.Alt.xaml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Themes\CabinetTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

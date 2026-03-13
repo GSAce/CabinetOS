@@ -1,13 +1,94 @@
 ﻿<UserControl x:Class="CabinetOS.UI.Settings.NetworkSettingsScreen"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Background="#111">
+             Background="{DynamicResource AppBackgroundBrush}">
 
-    <Grid Margin="40">
-        <TextBlock Text="Network Settings"
-                   Foreground="White"
-                   FontSize="32"
-                   FontWeight="Bold"/>
-    </Grid>
+    <!-- Merge your theme resources -->
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/CabinetOS.UI;component/Themes/CabinetTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="40">
+            <StackPanel Orientation="Vertical">
+
+                <!-- PAGE TITLE -->
+                <TextBlock Text="Network Settings"
+                           Style="{StaticResource PageTitle}"/>
+
+                <!-- DIRECTLINK SECTION -->
+                <TextBlock Text="DirectLink"
+                           Style="{StaticResource SectionHeader}"/>
+
+                <ToggleButton x:Name="DirectLinkToggle"
+                              Content="Enable DirectLink"
+                              Style="{StaticResource DarkToggle}"
+                              Width="250"
+                              Height="40"
+                              Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+
+                    <!-- PC IP -->
+                    <TextBlock Text="PC IP Address"
+                               Style="{StaticResource FieldLabel}"/>
+                    <TextBox x:Name="PcIpBox"
+                             Style="{StaticResource DarkTextBox}"/>
+
+                    <!-- PI IP -->
+                    <TextBlock Text="Pi IP Address"
+                               Style="{StaticResource FieldLabel}"/>
+                    <TextBox x:Name="PiIpBox"
+                             Style="{StaticResource DarkTextBox}"/>
+
+                    <!-- SSID -->
+                    <TextBlock Text="DirectLink SSID"
+                               Style="{StaticResource FieldLabel}"/>
+                    <TextBox x:Name="SsidBox"
+                             Style="{StaticResource DarkTextBox}"/>
+
+                    <!-- Password -->
+                    <TextBlock Text="DirectLink Password"
+                               Style="{StaticResource FieldLabel}"/>
+                    <PasswordBox x:Name="PasswordBox"
+                                 Style="{StaticResource DarkPasswordBox}"/>
+
+                    <!-- Channel -->
+                    <TextBlock Text="WiFi Channel"
+                               Style="{StaticResource FieldLabel}"/>
+                    <TextBox x:Name="ChannelBox"
+                             Style="{StaticResource DarkTextBox}"
+                             Width="80"/>
+                </StackPanel>
+
+                <!-- DIVIDER -->
+                <Border Style="{StaticResource Divider}"/>
+
+                <!-- STATUS SECTION -->
+                <TextBlock Text="Connection Status"
+                           Style="{StaticResource SectionHeader}"/>
+
+                <Border Background="#1A1A1A"
+                        Padding="10"
+                        CornerRadius="8"
+                        Width="400"
+                        Margin="0,0,0,10">
+                    <TextBlock x:Name="StatusText"
+                               Text="Unknown"
+                               Foreground="{StaticResource AppForegroundBrush}"
+                               FontSize="16"/>
+                </Border>
+
+                <Button x:Name="TestConnectionButton"
+                        Content="Test Connection"
+                        Style="{StaticResource DarkRoundedButton}"
+                        Width="200"
+                        Height="40"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
